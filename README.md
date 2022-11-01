@@ -1,4 +1,4 @@
-### Please install bootstrap 5, react, & firestore
+# Please install bootstrap 5, react, & firestore
 
 ## Run My Project
 

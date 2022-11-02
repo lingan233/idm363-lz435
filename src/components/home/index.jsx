@@ -1,3 +1,6 @@
+// import inventory from "../../App"
+// console.log({inventory})
+
 const Home = () => (
     <>
         <div className="text-start">

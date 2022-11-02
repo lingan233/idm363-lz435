@@ -11,8 +11,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyC0FwJN_IAd9fZaQjx_QJg65G-5PsFD6qc",
+  //apiKey: "AIzaSyC0FwJN_IAd9fZaQjx_QJg65G-5PsFD6qc",
+  apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
   authDomain: "mamartos-cat-shop.firebaseapp.com",
   projectId: "mamartos-cat-shop",
   storageBucket: "mamartos-cat-shop.appspot.com",

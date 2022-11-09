@@ -5,49 +5,48 @@ import Layout from './layouts/index';
 import './App.css'
 
 function App() {
-  const [inventory, setInventory] = useState([])
-  const inventoryArray = []
+  const [cat_items, setcat_items] = useState([])
 
   useEffect (() => {
-    const q = query(collection(db, 'Inventory'))
+    const cat_itemsArray = []
+    const q = query(collection(db, 'cat_items'))
     onSnapshot(q, querySnapshot => {
-      // setInventory([])
       querySnapshot.forEach(doc => {
-        console.log(doc.id)
-        console.log(doc.data())
-        const inventoryData = {
+        // console.log(doc.id)
+        // console.log(doc.data())
+        const cat_itemsData = {
           keyName: doc.id,
           ...doc.data(),
         }
-        inventoryArray.push(inventoryData)
+        cat_itemsArray.push(cat_itemsData)
       })
-      setInventory(inventoryArray)
+      setcat_items(cat_itemsArray)
     })
   }, [])
   
   // useEffect (() => {
-  //   console.log(inventory)
-  // },[inventory])
+  //   console.log(cat_items)
+  // },[cat_items])
 
-  // const listItems = inventory.map((item, index) =>
+  // const listItems = cat_items.map((item, index) =>
   //   <div className="text-start col-sm-6 col-md-4 col-lg-3" key={index}>
   //       <img src="https://via.placeholder.com/200" alt="" />
   //       <p className="m-0">{item.keyName}</p>
   //       <h4>${item.Price}</h4>
   //   </div>
   // );
-  // console.log(inventory) 
+  // console.log(cat_items) 
   return (
     <div className="App">
       <Layout />
       <div className='row'>
-        {inventory.map((item, index) => {
-          console.log(item.Price)
+        {cat_items.map((item, index) => {
+          // console.log(item.Price)
           return (
           <div className="text-start col-sm-6 col-md-4 col-lg-3" key={index}>
               <img src="https://via.placeholder.com/200" alt="" />
-              <p className="m-0">{item.keyName}</p>
-              <h4>${item.Price}</h4>
+              <p className="m-0">{item.item_title}</p>
+              <h4>${item.price}</h4>
           </div>
           )}
         )}

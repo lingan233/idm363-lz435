@@ -15,14 +15,13 @@ import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
-  //apiKey: "AIzaSyC0FwJN_IAd9fZaQjx_QJg65G-5PsFD6qc",
   apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
-  authDomain: "mamartos-cat-shop.firebaseapp.com",
-  projectId: "mamartos-cat-shop",
-  storageBucket: "mamartos-cat-shop.appspot.com",
-  messagingSenderId: "44818328247",
-  appId: "1:44818328247:web:fc7b90fbe61e39094afb32",
-  measurementId: "G-4YSPR3N7Q9"
+  authDomain: `${import.meta.env.VITE_FIREBASE_AUTH_DOMAIN}`,
+  projectId: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}`,
+  storageBucket: `${import.meta.env.VITE_FIREBASE_STORAGE_BUCKET}`,
+  messagingSenderId: `${import.meta.env.VITE_FIREBASE_MESSAGIN_SENDER_ID}`,
+  appId: `${import.meta.env.VITE_FIREBASE_APP_ID}`,
+  measurementId: `${import.meta.env.VITE_FIREBASE_MEASUREMENT_ID}`
 };
 
 // Initialize Firebase

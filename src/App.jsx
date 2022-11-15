@@ -1,10 +1,14 @@
 import {collection,  onSnapshot, query } from 'firebase/firestore'
 import { db } from './firestore'
-import { useEffect, useState } from 'react'
-import Layout from './layouts/index';
+import { useEffect, useState, createContext, useContext } from 'react'
+import Layout from './layouts/index'
 import './App.css'
 
+export const Context = createContext('Default Value');
+
 function App() {
+  const value = 'My Context Value';
+
   const [cat_items, setcat_items] = useState([])
 
   useEffect (() => {
@@ -23,35 +27,26 @@ function App() {
       setcat_items(cat_itemsArray)
     })
   }, [])
+  // console.log(cat_items)
   
-  // useEffect (() => {
-  //   console.log(cat_items)
-  // },[cat_items])
-
-  // const listItems = cat_items.map((item, index) =>
-  //   <div className="text-start col-sm-6 col-md-4 col-lg-3" key={index}>
-  //       <img src="https://via.placeholder.com/200" alt="" />
-  //       <p className="m-0">{item.keyName}</p>
-  //       <h4>${item.Price}</h4>
-  //   </div>
-  // );
-  // console.log(cat_items) 
   return (
-    <div className="App">
-      <Layout />
-      <div className='row'>
-        {cat_items.map((item, index) => {
-          // console.log(item.Price)
-          return (
-          <div className="text-start col-sm-6 col-md-4 col-lg-3" key={index}>
-              <img src="https://via.placeholder.com/200" alt="" />
-              <p className="m-0">{item.item_title}</p>
-              <h4>${item.price}</h4>
-          </div>
+    <Context.Provider value={value}>
+      <div className="App">
+        <Layout />
+        <div className='row'>
+          {cat_items.map((item, index) => {
+            // console.log(item.Price)
+            return (
+            <div className="text-start col-sm-6 col-md-4 col-lg-3" key={index}>
+                <img src="https://via.placeholder.com/200" alt="" />
+                <p className="m-0">{item.item_title}</p>
+                <h4>${item.price}</h4>
+            </div>
+            )}
           )}
-        )}
+        </div>
       </div>
-    </div>
+    </Context.Provider>
   )
 }
 

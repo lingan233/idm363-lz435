@@ -1,19 +1,39 @@
 // Form.js
 
 import { useDispatch, useSelector } from "react-redux";
-import { update } from "../../features/products";
+import { update, update_product } from "../../features/products";
 
 const Form = () => {
   const redux_product = useSelector((state) => state.redux_product.value);
   const dispatch = useDispatch();
+  
+  // const [inventory, set_inventory] = useState({
+  //   id: 0,
+  //   name: '',
+  //   price: 0
+  // })
 
-  function handleInputChange(e) {
+  // useEffect(() => {
+  //     set_inventory({
+  //         ...inventory,
+  //         id,
+  //         name,
+  //         price
+  //     })
+  // }, [])
+
+  function handleChange(e) {
     const state = {
       ...redux_product,
       [e.target.name]: e.target.value,
     };
-    dispatch(update(state));
+    // dispatch(update(state));
   }
+
+  // const [inputValue, setInputValue] = useState('')
+  // const handleChange = event => {
+  //   setInputValue(event.target.value)
+  // }
 
   return (
     <form>
@@ -26,21 +46,21 @@ const Form = () => {
               <div key={"inventory-edit-" + index}>
                 <input
                   name="item_title"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   placeholder="title name"
                   type="text"
                   value={item.item_title}
                 />
                 <input
                   name="price"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   placeholder="price"
                   type="number"
                   value={item.price}
                 />
                 <input
                   name="quantity"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                   placeholder="quantity"
                   type="number"
                   value={item.quantity}

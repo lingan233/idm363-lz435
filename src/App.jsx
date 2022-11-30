@@ -9,7 +9,7 @@ import { update } from './features/products'
 function App() {
   const [products, setProducts] = useState([])
   const dispatch = useDispatch();
-  const redux_product = useSelector((state) => state.redux_product.value);
+  // const redux_product = useSelector((state) => state.redux_product.value);
 
 
   useEffect (() => {

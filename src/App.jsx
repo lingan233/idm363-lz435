@@ -10,28 +10,25 @@ function App() {
   const [products, setProducts] = useState([])
   const dispatch = useDispatch();
   // const redux_product = useSelector((state) => state.redux_product.value);
-
+  localStorage.setItem("products", JSON.stringify(products));
+  // const productLocal = JSON.parse(localStorage.getItem("products"));
+  // console.log(JSON.parse(localStorage.getItem("products")));
 
   useEffect (() => {
     const productsArray = []
     const q = query(collection(db, 'cat_items'))
     onSnapshot(q, querySnapshot => {
       querySnapshot.forEach(doc => {
-        // console.log(doc.id)
-        // console.log(doc.data())
-        // dispatch(update(doc.data())) 
         const productsData = {
           keyName: doc.id,
           ...doc.data(),
         }
-        // dispatch(update(productsData)) 
         productsArray.push(productsData)
-        // console.log(productsArray)
-        // dispatch(update(productsArray)) 
       })
-      // console.log(productsArray)
       dispatch(update(productsArray)) 
       setProducts(productsArray)
+      // localStorage.setItem("products", JSON.stringify(productsArray));
+      // console.log(localStorage);
       // console.log(productsData) 
       // dispatch(update(redux_product, products)) 
     })

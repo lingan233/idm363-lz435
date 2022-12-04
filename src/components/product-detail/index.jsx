@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { format_price } from "../../utils";
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { update, updateCartNum } from "../../features/user_cart"
+import { addToCart } from "../../features/user_cart"
 
 function getProduct(key) {
     const redux_product = useSelector((state) => state.redux_product.value);
@@ -18,6 +18,8 @@ const Details = () => {
     const redux_product = useSelector((state) => state.redux_product.value);
     const dispatch = useDispatch();
     const redux_user_cart = useSelector((state) => state.redux_user_cart.value);
+    
+    console.log(redux_user_cart)
 
     const [user_cart, set_user_cart] = useState([]);
     // console.log(user_cart);
@@ -38,9 +40,11 @@ const Details = () => {
         const cart = [...user_cart];
         cart.forEach((product) => {
             if (product.item_title === title) {   
-                product.in_cart++;
-                // console.log(product.in_cart);
-                // dispatch(update(product.in_cart));
+                product.in_cart++;                
+                // // console.log(Object.values(product));
+                // dispatch(addToCart(product));
+
+                // // dispatch(update(product.in_cart));
             }
         });
         
@@ -48,6 +52,9 @@ const Details = () => {
         set_user_cart(cart);
         // dispatch(update(cart));
     }
+
+    // console.log(product)
+    // console.log("user_cart", user_cart)
 
     return(
         <div>
@@ -73,6 +80,7 @@ const Details = () => {
                 </ul>
             )}
         </div>
+
     
     );    
 };

@@ -8,24 +8,24 @@ import { Routes, Route, Link } from "react-router-dom";
 
 const Layout = () => (
   <>
-      <Header
-          title = "Mamartos' Cat Shop"/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="form" element={<Form />} />
-        <Route path="product-detail" element={<Details />} >
-            <Route path=":productKey" element={<Details />} />
-        </Route>
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>Not Found</p>
-            </main>
-          }
-        />
-      </Routes>
+    <Header
+        title = "Mamartos' Cat Shop"/>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="cart" element={<Cart />} />
+      <Route path="form" element={<Form />} />
+      <Route path="product-detail" element={<Details />} >
+          <Route path=":productKey" element={<Details />} />
+      </Route>
+      <Route
+        path="*"
+        element={
+          <main style={{ padding: "1rem" }}>
+            <p>Not Found</p>
+          </main>
+        }
+      />
+    </Routes>
   </>
 );
 

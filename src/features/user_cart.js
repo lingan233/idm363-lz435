@@ -4,7 +4,7 @@ function getValue() {
   const initialStateValue = [];
   const my_object = localStorage.getItem("products")
   console.log("my_object:", my_object)
-  if (typeof my_object !== null) {
+  if (typeof my_object !== 'undefined' && my_object !== null) {
     // console.log('my_object is null')
     console.log('my_object not null:', localStorage.getItem("products"))
     console.log('my_object not null: json.parse', JSON.parse(localStorage.getItem("products")) )

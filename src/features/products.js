@@ -11,17 +11,20 @@ export const redux_productSlice = createSlice({
     update: (state, action) => {
       state.value = action.payload;
     },
-    // update_product: (state, action) => {
-    //   const productIndex = state.value.findIndex((product) => product.id === action.payload.id)
-    //   state.value[productIndex] = {
-    //     ...state.value[productIndex],
-    //     name: action.payload.name,
-    //     price: action.payload.price
-    //   }
-    // },
+    editProduct: (state, action) => {
+      const itemIndex = state.value.findIndex((item) => item.keyName === action.payload.keyName)
+      state.value[itemIndex] = {
+        ...state.value[itemIndex],
+        img: action.payload.img,
+        item_title: action.payload.title,
+        price: action.payload.price,
+        quantity: action.payload.quantity
+      }
+    }
+
   }
 });
 
-export const { update, update_product } = redux_productSlice.actions;
+export const { update, editProduct } = redux_productSlice.actions;
 
 export default redux_productSlice.reducer;

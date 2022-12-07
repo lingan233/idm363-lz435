@@ -1,77 +1,49 @@
-// Form.js
 
 import { useDispatch, useSelector } from "react-redux";
-import { update, update_product } from "../../features/products";
+import Details from "../form-detail";
+import PropTypes from 'prop-types';
+
 
 const Form = () => {
   const redux_product = useSelector((state) => state.redux_product.value);
-  const dispatch = useDispatch();
-  
-  // const [inventory, set_inventory] = useState({
-  //   id: 0,
-  //   name: '',
-  //   price: 0
-  // })
-
-  // useEffect(() => {
-  //     set_inventory({
-  //         ...inventory,
-  //         id,
-  //         name,
-  //         price
-  //     })
-  // }, [])
-
-  function handleChange(e) {
-    const state = {
-      ...redux_product,
-      [e.target.name]: e.target.value,
-    };
-    // dispatch(update(state));
-  }
-
-  // const [inputValue, setInputValue] = useState('')
-  // const handleChange = event => {
-  //   setInputValue(event.target.value)
-  // }
-
   return (
-    <form>
-      <div>
-        {console.log(redux_product)}
-        {Object.values(redux_product).map((item, index) => {
-            // console.log(item)
-            // console.log(index)
-            return (
-              <div key={"inventory-edit-" + index}>
-                <input
-                  name="item_title"
-                  onChange={handleChange}
-                  placeholder="title name"
-                  type="text"
-                  value={item.item_title}
-                />
-                <input
-                  name="price"
-                  onChange={handleChange}
-                  placeholder="price"
-                  type="number"
-                  value={item.price}
-                />
-                <input
-                  name="quantity"
-                  onChange={handleChange}
-                  placeholder="quantity"
-                  type="number"
-                  value={item.quantity}
-                />
-              </div>
-            )}
-        )}
-      </div>
-    </form>
-  );
+    <div>
+      <h5 className="font-patrick-hand text-start my-4 py-4">Edit Inventory</h5>
+      <form>
+        <table className="table table-sm table-responsive table-striped table-hover">
+          <thead className="table-dark">
+            <tr>
+              <th>Image URL</th>
+              <th>Product Title</th>
+              <th>Price (¢)</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.values(redux_product).map((product, index) => (
+              <Details
+                key={"inventory-edit-" + index}
+                keyName={product.keyName}
+                img={product.img}
+                title={product.item_title}
+                price={product.price}
+                quantity={product.quantity}
+              />
+            ))}
+          </tbody>
+        </table>
+      </form>
+    </div>
+    );
 };
 
-// export { addProducts };
+Form.propTypes = {
+  keyName: PropTypes.string, 
+  img: PropTypes.string, 
+  title: PropTypes.string, 
+  price: PropTypes.number, 
+  quantity: PropTypes.number
+}
+
 export default Form;

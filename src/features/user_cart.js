@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = {
-    //   redux_productname: "jane_smith",
-//   email: "jane@example.com",
-
-};
+const initialStateValue = [
+  ...JSON.parse(localStorage.getItem("products"))].map((product) => ({
+  ...product,
+  in_cart: 0,
+}));
 
 export const redux_productSlice = createSlice({
   name: "redux_user_cart",
@@ -12,29 +12,25 @@ export const redux_productSlice = createSlice({
     value: initialStateValue,
   },
   reducers: {
-    // updateCartNum: (state, action) => {
-    //   state.value.in_cart = action.payload.in_cart;
-    // //   console.log("state:", state.value);
-    // //   console.log(action.payload);
-    // },
-    // update: (state, action) => {
-    //   state.value = action.payload;
-    // //   console.log("state:", state.value);
-    // //   console.log(action.payload);
-    // },
     addToCart: (state, action) => {
-      // const in_cart = state.value.find((item) => item.keyName === action.payload.keyName)
-      console.log(action.payload.keyName)
-      // if (in_cart) {
-      //   in_cart.quantity++;
-      // } else {
-      //   // state.value.push({ ...action.payload, quantity: 1 });
-      //   console.log("not in cart")
-      // }
+      const itemInCart = state.value.find((item) => item.keyName === action.payload.keyName)
+      if (itemInCart) {
+        itemInCart.in_cart++;
+      } else {
+        console.log("no itemInCart")
+      }
+    },
+    removeFromCart: (state, action) => {
+      const itemInCart = state.value.find((item) => item.keyName === action.payload.keyName)
+      if (itemInCart) {
+        itemInCart.in_cart--;
+      } else {
+        console.log("no itemInCart")
+      }
     },
   },
 });
 
-export const { addToCart } = redux_productSlice.actions;
+export const { addToCart, removeFromCart } = redux_productSlice.actions;
 
 export default redux_productSlice.reducer;

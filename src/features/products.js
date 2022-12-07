@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = JSON.parse(localStorage.getItem("products"));
+var initialStateValue = JSON.parse(localStorage.getItem("products"));
 
 export const redux_productSlice = createSlice({
   name: "redux_product",

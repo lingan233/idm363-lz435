@@ -20,7 +20,7 @@ const initialStateValue = [
   in_cart: 0,
 }))];
 
-console.log(initialStateValue)
+// console.log(initialStateValue)
 
 export const redux_productSlice = createSlice({
   name: "redux_user_cart",

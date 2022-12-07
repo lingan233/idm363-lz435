@@ -4,7 +4,8 @@ function getValue() {
   const initialStateValue = [];
   if (typeof my_object !== null) {
     // console.log('my_object is null')
-    console.log('my_object not null:', JSON.parse(localStorage.getItem("products")) )
+    console.log('my_object not null:', localStorage.getItem("products"))
+    console.log('my_object not null: json.parse', JSON.parse(localStorage.getItem("products")) )
     const initialStateValue = [
       ...JSON.parse(localStorage.getItem("products")).map((product) => ({
       ...product,

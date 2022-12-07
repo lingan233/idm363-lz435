@@ -1,5 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// async function getValue() {
+//   await JSON.parse(localStorage.getItem("products"));
+//   const initialStateValue = [
+//     ...JSON.parse(localStorage.getItem("products"))].map((product) => ({
+//     ...product,
+//     in_cart: 0,
+//   }));
+//   return initialStateValue;
+// }
+
+// const initialStateValue = getValue();
+
+
+
 const initialStateValue = [
   ...JSON.parse(localStorage.getItem("products"))].map((product) => ({
   ...product,

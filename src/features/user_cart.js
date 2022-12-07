@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 function getValue() {
   const initialStateValue = [];
+  const my_object = localStorage.getItem("products")
   if (typeof my_object !== null) {
     // console.log('my_object is null')
     console.log('my_object not null:', localStorage.getItem("products"))

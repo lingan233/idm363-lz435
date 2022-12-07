@@ -20,13 +20,6 @@ function getValue() {
   return initialStateValue;
 }
 
-// const initialStateValue = getValue();
-
-// console.log(localStorage.getItem("products"))
-
-// const my_object = localStorage.getItem("products")
-// // console.log(typeof localStorage.getItem("products"))
-
 const initialStateValue = getValue();
 
 console.log(initialStateValue)

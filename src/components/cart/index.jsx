@@ -3,22 +3,34 @@ import { format_price } from "../../utils";
 import { addToCart, removeFromCart } from "../../features/user_cart"
 
 const Cart = () => {
+  // async function getValue() {
+  //   await JSON.parse(localStorage.getItem("products"));
+  //   const initialStateValue = [
+  //     ...JSON.parse(localStorage.getItem("products"))].map((product) => ({
+  //     ...product,
+  //     in_cart: 0,
+  //   }));
+  //   return initialStateValue;
+  // }
+
+  // const user_cart = getValue();
+
+  // localStorage.setItem("user_cart", JSON.stringify(user_cart));
 
   const redux_user_cart = useSelector((state) => state.redux_user_cart.value);
   var totalPrice = 0;
 
   const dispatch = useDispatch();
 
-
   function add_to_cart(keyName, name, price){
     dispatch(addToCart({
-        keyName, name, price
+      keyName, name, price
     }));
   }
 
   function remove_from_cart(keyName, name, price){
     dispatch(removeFromCart({
-        keyName, name, price
+      keyName, name, price
     }));
   }
   return(
